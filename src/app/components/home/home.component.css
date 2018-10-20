@@ -1,0 +1,13 @@
+.jumbotron {
+    margin-top: 0%;
+    color: #ffffff;
+    background-image: linear-gradient(to right, #0bb3af, #85c77c);
+}
+
+.shadow-title {
+    text-shadow: 1px 1px 2px black;
+}
+
+.separation {
+    margin-right: 1%;
+}
