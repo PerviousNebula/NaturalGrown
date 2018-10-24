@@ -11,12 +11,14 @@ import { HomeComponent } from './components/home/home.component';
 import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { ProtectedHomeComponent } from './components/protected-home/protected-home.component';
 import { compileNgModuleFromRender2 } from '@angular/compiler/src/render3/r3_module_compiler';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { AboutComponent } from './components/about/about.component';
 
 // Servicios
 import { AuthService } from "./services/auth.service";
 import { AuthGuardService } from "./services/auth-guard.service";
-import { FooterComponent } from './components/shared/footer/footer.component';
-import { AboutComponent } from './components/about/about.component';
+import { FruitsService } from "./services/fruits.service";
+
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { AboutComponent } from './components/about/about.component';
   ],
   providers: [
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    FruitsService
   ],
   bootstrap: [AppComponent],
 })

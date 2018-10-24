@@ -33,35 +33,11 @@
 <div class="container">
     <div class="row">
         <div class="card-deck">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/oranges2.jpg" alt="naranja">
+            <div class="card" style="width: 18rem;" *ngFor="let fruit of fruits | slice:0:4">
+                <img class="card-img-top" [src]="fruit.img" [alt]="fruit.name">
                 <div class="card-body">
-                    <h5 class="card-title">Naranjas</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href="#" class="btn btn-primary">Explorar</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/bananas2.jpg" alt="Platanos">
-                <div class="card-body">
-                    <h5 class="card-title">Platanos</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href="#" class="btn btn-primary">Explorar</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/apples.jpg" alt="Manzanas">
-                <div class="card-body">
-                    <h5 class="card-title">Manzanas</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href="#" class="btn btn-primary">Explorar</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/broccoli2.jpg" alt="Brocoli">
-                <div class="card-body">
-                    <h5 class="card-title">Brocoli</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <h5 class="card-title">{{fruit.name}}</h5>
+                    <p class="card-text">{{fruit.desc}}</p>
                     <a href="#" class="btn btn-primary">Explorar</a>
                 </div>
             </div>
@@ -70,37 +46,14 @@
     <br>
     <div class="row">
         <div class="card-deck">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/avocado.jpg" alt="Aguacate">
+            <div class="card" style="width: 18rem;" *ngFor="let fruit of fruits | slice:4:8">
+                <img class="card-img-top" [src]="fruit.img" [alt]="fruit.name">
                 <div class="card-body">
-                    <h5 class="card-title">Aguacates</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href="#" class="btn btn-primary">Explorar</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/tomato.jpg" alt="Tomates">
-                <div class="card-body">
-                    <h5 class="card-title">Tomates</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href="#" class="btn btn-primary">Explorar</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/carrot.jpg" alt="Zanahorias">
-                <div class="card-body">
-                    <h5 class="card-title">Zanahorias</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <a href="#" class="btn btn-primary">Explorar</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="../../../assets/berries.jpg" alt="Fresas">
-                <div class="card-body">
-                    <h5 class="card-title">Fresas</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <h5 class="card-title">{{fruit.name}}</h5>
+                    <p class="card-text">{{fruit.desc}}</p>
                     <a href="#" class="btn btn-primary">Explorar</a>
                 </div>
             </div>
         </div>
     </div>
+</div>

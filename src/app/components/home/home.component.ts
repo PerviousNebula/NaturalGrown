@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FruitsService, Fruit } from "../../services/fruits.service";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  fruits:Fruit[] = [];
 
-  ngOnInit() {
+  constructor(private _fruitService:FruitsService) {
+    
   }
 
+  ngOnInit() {
+    this.fruits = this._fruitService.getFruits();
+    console.log(this.fruits);
+  }
 }
