@@ -1,3 +1,22 @@
-<p>
-  busqueda works!
-</p>
+<div class="container animated fadeIn fast">
+    <h3>Encuentra <small>huerto más cercano</small></h3>
+    <hr>
+    <div>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]=15>
+            <agm-marker [latitude]="lat" [longitude]="lng">
+                <agm-info-window>
+                    <strong>Vendedor</strong>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quis mollit</p>
+                    <strong>Fruto</strong>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quis mollit</p>
+                    <strong>Precio</strong>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quis mollit</p>
+                    <div>
+                        <button class="btn btn-sm btn-primary">Contactar</button>
+                        <button class="btn btn-sm btn-default">Cancelar</button>
+                    </div>
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
+    </div>
+</div>

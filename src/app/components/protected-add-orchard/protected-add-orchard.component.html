@@ -1,0 +1,67 @@
+<div class="container animated fadeIn fast">
+    <h4>Agrega <small>huerto</small></h4>
+    <hr>
+    <form (ngSubmit)="guardar(forma)" #forma="ngForm" novalidate="">
+        <div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Fruto</label>
+                <div class="col-8">
+                    <input [(ngModel)]="orchard.fruit" id="fruit" class="form-control" type="text" placeholder="Fruto" name="fruit" minlength="4" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Precio por kg</label>
+                <div class="col-8">
+                    <input [(ngModel)]="orchard.price" id="price" class="form-control" type="number" placeholder="Precio" name="price" minlength="1" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Fecha que fue cultivado</label>
+            <div class="col-md-8">
+                <input [(ngModel)]="orchard.dateHarv" id="date" class="form-control" type="date" placeholder="Correo electrónico" name="date" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Tipo de huerto</label>
+            <div class="col-md-8">
+                <div class="form-check">
+                    <input [(ngModel)]="orchard.orchardType" class="form-check-input" type="radio" name="orchardType" id="familyGarden" value="option1" checked>
+                    <label class="form-check-label" for="familyGarden">
+                Huerto familiar
+            </label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="orchard.orchardType" class="form-check-input" type="radio" name="orchardType" id="urbanOrchard" value="option2">
+                    <label class="form-check-label" for="urbanOrchard">
+                Huerto urbano
+            </label>
+                </div>
+                <div class="form-check">
+                    <input [(ngModel)]="orchard.orchardType" class="form-check-input" type="radio" name="orchardType" id="ecoOrchard" value="option3">
+                    <label class="form-check-label" for="ecoOrchard">
+                Huerto ecológico
+            </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Foto</label>
+            <div class="col-8">
+                <input id="photo" class="form-control" type="file" name="photo">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button [disabled]="!forma.valid" type="submit" class="btn btn-outline-primary">
+                        Guardar <i class="material-icons md-18" style="font-size: 18px">save</i>
+      </button>
+                <button (click)="addNew(forma)" style="margin-left: 2px" class="btn btn-success">Nuevo huerto<i class="material-icons md-18" style="font-size: 18px">add</i></button>
+            </div>
+        </div>
+    </form>
+</div>

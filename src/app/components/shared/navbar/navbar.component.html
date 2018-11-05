@@ -6,29 +6,32 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['home']">Inicio</a>
+                <a class="nav-link" [routerLink]="['home']"><i class="material-icons">home</i>Inicio</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['busqueda']">Búsqueda</a>
+                <a class="nav-link" *ngIf="auth.isAuthenticated()" [routerLink]="['busqueda']"><i class="material-icons">location_searching</i>Búsqueda</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['about']">Acerca de</a>
+                <a class="nav-link" *ngIf="auth.isAuthenticated()" [routerLink]="['protected-add-orchard/nuevo']"><i class="material-icons">add_location</i>Agregar</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" *ngIf="auth.isAuthenticated()" [routerLink]="['protected-home']">Protegida</a>
+                <a class="nav-link" *ngIf="auth.isAuthenticated()" [routerLink]="['protected-home']"><i class="material-icons">verified_user</i>Mi perfil</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['about']"><i class="material-icons">info</i>Acerca de</a>
             </li>
         </ul>
 
         <span class="navbar-text">
             <button (click)="login()"
                     *ngIf="!auth.isAuthenticated()" 
-                    class="btn btn-success"
-                    type="button">Iniciar sesión</button>
+                    class="btn btn-sm btn-success"
+                    type="button">Iniciar sesión<i class="material-icons">launch</i></button>
                     
             <button (click)="salir()" 
                     *ngIf="auth.isAuthenticated()"     
-                    class="btn btn-danger"
-                    type="button">Cerrar sesión</button>
+                    class="btn btn-sm btn-danger"
+                    type="button">Cerrar sesión<i class="material-icons">exit_to_app</i></button>
         </span>
     </div>
 </nav>

@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from "@angular/forms";
+import { HttpModule } from "@angular/http";
+import { HttpClientModule } from '@angular/common/http';
 
 // Rutas
 import {APP_ROUTING} from './app.routes';
@@ -13,12 +16,17 @@ import { ProtectedHomeComponent } from './components/protected-home/protected-ho
 import { compileNgModuleFromRender2 } from '@angular/compiler/src/render3/r3_module_compiler';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
+import { ProtectedAddOrchardComponent } from './components/protected-add-orchard/protected-add-orchard.component';
+import { AgmCoreModule } from '@agm/core';
 
 // Servicios
 import { AuthService } from "./services/auth.service";
 import { AuthGuardService } from "./services/auth-guard.service";
 import { FruitsService } from "./services/fruits.service";
+import { OrchardsService } from "./services/orchards.service";
 
+// Pipes
+import { KeysPipe } from './pipes/keys.pipe';
 
 
 @NgModule({
@@ -29,16 +37,24 @@ import { FruitsService } from "./services/fruits.service";
     BusquedaComponent,
     ProtectedHomeComponent,
     FooterComponent,
-    AboutComponent
+    AboutComponent,
+    ProtectedAddOrchardComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAJwW7b17BUl4rrUwUN9OqR-GpEC-0P38o'
+    }),
     APP_ROUTING
   ],
   providers: [
     AuthService,
     AuthGuardService,
-    FruitsService
+    FruitsService,
+    OrchardsService
   ],
   bootstrap: [AppComponent],
 })

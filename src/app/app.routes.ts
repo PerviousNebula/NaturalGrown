@@ -1,8 +1,9 @@
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from './components/home/home.component';
-import {BusquedaComponent} from './components/busqueda/busqueda.component';
+import { HomeComponent } from './components/home/home.component';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { AboutComponent } from "./components/about/about.component";
 import { ProtectedHomeComponent } from './components/protected-home/protected-home.component';
+import { ProtectedAddOrchardComponent } from "./components/protected-add-orchard/protected-add-orchard.component";
 import { AuthGuardService } from "./services/auth-guard.service";
 
 const APP_ROUTES: Routes = [
@@ -12,6 +13,11 @@ const APP_ROUTES: Routes = [
     { 
         path: 'protected-home', 
         component: ProtectedHomeComponent, 
+        canActivate: [ AuthGuardService ]
+    },
+    { 
+        path: 'protected-add-orchard/:id', 
+        component: ProtectedAddOrchardComponent, 
         canActivate: [ AuthGuardService ]
     },
     { path: '**', pathMatch: 'full', redirectTo: 'home' },
