@@ -1,7 +1,7 @@
 export interface Address {
     street:string;
     suburb:string;
-    zip:string;
+    zip:number;
     city:string;
     state:string;
     country:string;

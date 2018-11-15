@@ -9,13 +9,13 @@
                 <a class="nav-link" [routerLink]="['home']"><i class="material-icons">home</i>Inicio</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" *ngIf="auth.isAuthenticated()" [routerLink]="['busqueda']"><i class="material-icons">location_searching</i>Búsqueda</a>
+                <a class="nav-link" *ngIf="_authf.user.uid" [routerLink]="['busqueda']"><i class="material-icons">location_searching</i>Búsqueda</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" *ngIf="auth.isAuthenticated()" [routerLink]="['protected-add-orchard/nuevo']"><i class="material-icons">add_location</i>Agregar</a>
+                <a class="nav-link" *ngIf="_authf.user.uid" [routerLink]="['protected-add-orchard/nuevo']"><i class="material-icons">add_location</i>Agregar</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" *ngIf="auth.isAuthenticated()" [routerLink]="['protected-home']"><i class="material-icons">verified_user</i>Mi perfil</a>
+                <a class="nav-link" *ngIf="_authf.user.uid" [routerLink]="['protected-home']"><i class="material-icons">verified_user</i>Mi perfil</a>
             </li>
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="['about']"><i class="material-icons">info</i>Acerca de</a>
@@ -23,15 +23,8 @@
         </ul>
 
         <span class="navbar-text">
-            <button (click)="login()"
-                    *ngIf="!auth.isAuthenticated()" 
-                    class="btn btn-sm btn-success"
-                    type="button">Iniciar sesión<i class="material-icons">launch</i></button>
-                    
-            <button (click)="salir()" 
-                    *ngIf="auth.isAuthenticated()"     
-                    class="btn btn-sm btn-danger"
-                    type="button">Cerrar sesión<i class="material-icons">exit_to_app</i></button>
+            <button *ngIf="!_authf.user.uid" (click)="ingresar()" class="btn btn-sm btn-outline-success">INICIAR SESIÓN</button>
+            <button *ngIf="_authf.user.uid" (click)="cerrar_sesion()" class="btn btn-sm btn-outline-danger">CERRAR SESIÓN</button>
         </span>
     </div>
 </nav>

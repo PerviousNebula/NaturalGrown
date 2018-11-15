@@ -2,15 +2,15 @@
     <h3>Encuentra <small>huerto más cercano</small></h3>
     <hr>
     <div>
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]=15>
-            <agm-marker [latitude]="lat" [longitude]="lng">
+        <agm-map [latitude]="lat" [longitude]="lon" [zoom]=2>
+            <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lon">
                 <agm-info-window>
-                    <strong>Vendedor</strong>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quis mollit</p>
+                    <strong>Fruta</strong>
+                    <p>{{ marker.title }}</p>
                     <strong>Fruto</strong>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quis mollit</p>
+                    <p>{{ marker.desc }}</p>
                     <strong>Precio</strong>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quis mollit</p>
+                    <p>{{ marker.price }}</p>
                     <div>
                         <button class="btn btn-sm btn-primary">Contactar</button>
                         <button class="btn btn-sm btn-default">Cancelar</button>

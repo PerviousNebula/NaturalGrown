@@ -4,7 +4,7 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
 import { AboutComponent } from "./components/about/about.component";
 import { ProtectedHomeComponent } from './components/protected-home/protected-home.component';
 import { ProtectedAddOrchardComponent } from "./components/protected-add-orchard/protected-add-orchard.component";
-import { AuthGuardService } from "./services/auth-guard.service";
+import { AuthGuardFireService } from './services/auth-guard-fire.service';
 
 const APP_ROUTES: Routes = [
     { path: 'home', component: HomeComponent },
@@ -12,13 +12,13 @@ const APP_ROUTES: Routes = [
     { path: 'about', component: AboutComponent },
     { 
         path: 'protected-home', 
-        component: ProtectedHomeComponent, 
-        canActivate: [ AuthGuardService ]
+        component: ProtectedHomeComponent,
+        canActivate: [ AuthGuardFireService ]
     },
     { 
         path: 'protected-add-orchard/:id', 
         component: ProtectedAddOrchardComponent, 
-        canActivate: [ AuthGuardService ]
+        canActivate: [ AuthGuardFireService ]
     },
     { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];

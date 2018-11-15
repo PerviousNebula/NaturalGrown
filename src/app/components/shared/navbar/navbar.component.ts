@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { AuthService } from "../../../services/auth.service";
+import { AuthfService } from "../../../services/authf.service";
 
 @Component({
   selector: 'app-navbar',
@@ -9,17 +8,13 @@ import { AuthService } from "../../../services/auth.service";
 })
 export class NavbarComponent {
 
-  constructor(public auth:AuthService) { 
-    auth.handleAuthentication();
+  constructor(public _authf:AuthfService) {}
 
+  ingresar() {
+    this._authf.login();
   }
 
-  login() {
-    this.auth.login();
+  cerrar_sesion() {
+    this._authf.logout();
   }
-
-  salir() {
-    this.auth.logout();
-  }
-
 }

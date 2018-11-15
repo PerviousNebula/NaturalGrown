@@ -3,80 +3,95 @@
     <hr>
     <div style="margin-top: 10px;" class="row" *ngIf="profile">
         <div class="col-md-4">
-            <img class="img-fluid img-thumbnail" [src]="profile.picture">
+            <img class="img-fluid img-thumbnail" [src]="profile.photo">
         </div>
 
         <div class="col-md-8">
             <p class="font-weight-bold">Información personal</p>
             <ul class="list-group">
-                <li class="list-group-item">{{ profile.name }} </li>
-                <li class="list-group-item">{{ profile.nickname }} </li>
-                <li class="list-group-item">{{ profile.updated_at | date:'dd MM yyyy' }} </li>
+                <li class="list-group-item"><b>Nombre: </b> {{ profile.name }} </li>
+                <li class="list-group-item"><b>Correo: </b>{{ profile.email }} </li>
+                <li *ngIf="profile.phone" class="list-group-item"><b>Teléfono: </b>{{ profile.phone }} </li>
+                <li class="list-group-item"><b>Clave única de usuario: </b>{{ profile.uid }} </li>
+
             </ul>
-            <br>
-            <div class="col-md-8">
-                <p class="font-weight-bold">Dirección</p>
-                <form (ngSubmit)="updateUserAddress(forma)" #forma="ngForm" novalidate="">
-                    <div class="form-row">
-                        <label class="col-2 col-form-label">Calle</label>
-                        <div class="col-8">
-                            <input [(ngModel)]="address.street" id="street" class="form-control" type="text" placeholder="Calle" name="street" minlength="4" required>
-                        </div>
-                    </div>
+        </div>
+    </div>
 
-                    <div class="form-group row">
-                        <label class="col-2 col-form-label">Colonia</label>
-                        <div class="col-8">
-                            <input [(ngModel)]="address.suburb" id="suburb" class="form-control" type="text" placeholder="Colonia" name="suburb" minlength="4" required>
-                        </div>
-                    </div>
+    <br>
 
-                    <div class="form-group row">
-                        <label class="col-2 col-form-label">Código Postal</label>
-                        <div class="col-md-8">
-                            <input [(ngModel)]="address.zip" id="zip" class="form-control" type="number" placeholder="C.P." name="zip" required>
-                        </div>
+    <div class="container">
+        <p class="font-weight-bold">Datos demográficos</p>
+        <form #forma="ngForm" novalidate="">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="street">Calle</label>
+                        <input id="street" type="text" class="form-control" placeholder="Calle">
                     </div>
-
-                    <div class="form-group row">
-                        <label class="col-2 col-form-label">País</label>
-                        <div class="col-md-8">
-                            <input [(ngModel)]="address.country" id="country" class="form-control" type="number" placeholder="País" name="country" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="suburb">Colonia</label>
+                        <input id="suburb" type="text" class="form-control" placeholder="Colonia">
                     </div>
-
-                </form>
-                <p class="font-weight-bold">Mis huertos</p>
-                <table class="table table-bordered table-light">
-                    <thead style="color: white" class="bg-success">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Fruto</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col">Fecha de cultivo</th>
-                            <th scope="col">Tipo de huerto</th>
-                            <th scope="col">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody *ngFor="let k of orchards | keys; let i = index">
-                        <td>{{ i + 1 }}</td>
-                        <td>{{ orchards[k].fruit }}</td>
-                        <td>{{ orchards[k].price }}</td>
-                        <td>{{ orchards[k].dateHarv }}</td>
-                        <td>{{ orchards[k].orchardType }}</td>
-                        <td>
-                            <button [routerLink]="['/protected-add-orchard', k]" class="btn btn-sm btn-dark"><i class="material-icons md-18" style="font-size: 18px">edit</i></button>
-                            <button (click)="deleteOrchard(k)" class="btn btn-sm btn-danger"><i class="material-icons md-18" style="font-size: 18px">delete_forever</i></button>
-                        </td>
-                    </tbody>
-                </table>
-                <div *ngIf="(orchards | keys).length == 0 && !loading" class="alert alert-info" role="alert">
-                    <strong>No tienes ningún huerto registrado...</strong>
+                    <div class="form-group">
+                        <label for="zip">Código Postal</label>
+                        <input id="zip" type="text" class="form-control" placeholder="Código Postal">
+                    </div>
                 </div>
-                <div *ngIf="loading" class="alert alert-warning" role="alert">
-                    <strong>Cargando tus huertos registrados, por favor espere...</strong>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="country">País</label>
+                        <input id="country" type="text" class="form-control" placeholder="País">
+                    </div>
+                    <div class="form-group">
+                        <label for="state">Estado</label>
+                        <input id="state" type="text" class="form-control" placeholder="Estado">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Ciudad</label>
+                        <input id="city" type="text" class="form-control" placeholder="Ciudad">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">&nbsp;</label>
+                    <div class="input-group col-md-8">
+                        <button class="btn btn-success"><i class="material-icons md-18" style="font-size: 32px">update</i></button>
+                    </div>
                 </div>
             </div>
-            <pre>
-    </pre>
+        </form>
+    </div>
+    <div class="container">
+        <p class="font-weight-bold">Mis huertos</p>
+        <table class="table table-bordered table-light">
+            <thead style="color: white" class="bg-success">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fruto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Fecha de cultivo</th>
+                    <th scope="col">Tipo de huerto</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let k of orchards | keys; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ orchards[k].fruit }}</td>
+                <td>{{ orchards[k].price }}</td>
+                <td>{{ orchards[k].dateHarv }}</td>
+                <td>{{ orchards[k].orchardType }}</td>
+                <td>
+                    <button [routerLink]="['/protected-add-orchard', k]" class="btn btn-sm btn-dark"><i class="material-icons md-18" style="font-size: 18px">edit</i></button>
+                    <button (click)="deleteOrchard(k)" class="btn btn-sm btn-danger"><i class="material-icons md-18" style="font-size: 18px">delete_forever</i></button>
+                </td>
+            </tbody>
+        </table>
+        <div *ngIf="(orchards | keys).length == 0 && !loading" class="alert alert-info" role="alert">
+            <strong>No tienes ningún huerto registrado...</strong>
         </div>
+        <div *ngIf="loading" class="alert alert-warning" role="alert">
+            <strong>Cargando tus huertos registrados, por favor espere...</strong>
+        </div>
+    </div>
+    <pre></pre>
+</div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
+import { AuthfService } from "../../services/authf.service";
 import { OrchardsService } from "../../services/orchards.service";
 import { Address } from "../../interfaces/address";
+import { AddressService } from "../../services/address.service";
 
 @Component({
   selector: 'app-protected-home',
@@ -9,9 +11,10 @@ import { Address } from "../../interfaces/address";
   styles: []
 })
 export class ProtectedHomeComponent implements OnInit {
-  profile:any;
+  profile:any = {};
   orchards:any[] = [];
   loading:boolean = true;
+  addresses:any[] = [];
   
   address:Address = {
     street:"",
@@ -23,20 +26,22 @@ export class ProtectedHomeComponent implements OnInit {
   }
 
   constructor(private auth:AuthService,
-              private _orchardService:OrchardsService) { 
+              private _authf:AuthfService,
+              private _orchardService:OrchardsService,
+              private _addressService:AddressService) {
+              this.profile = this._authf.user; 
     this._orchardService.getOrchards().subscribe(data => {
       console.log(data);
       //this.loading = false;
       setTimeout(() => {
         this.loading = false;
         this.orchards = data;
-      }, 1000);
-    });
-          
+      }, 3000);
+    });       
   }
 
   ngOnInit() {
-    if (this.auth.userProfile) {
+    /*if (this.auth.userProfile) {
       this.profile = this.auth.userProfile;
       console.log(this.profile);
     } else {
@@ -44,7 +49,7 @@ export class ProtectedHomeComponent implements OnInit {
         this.profile = profile;
         console.log(this.profile);
       });
-    }
+    }*/
   }
   
   deleteOrchard(key$:string) {
@@ -58,7 +63,4 @@ export class ProtectedHomeComponent implements OnInit {
     })
   }
 
-  updateUserAddress(forma) {
-    
-  }
 }
