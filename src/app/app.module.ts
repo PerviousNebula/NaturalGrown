@@ -32,9 +32,11 @@ import { FruitsService } from "./services/fruits.service";
 import { OrchardsService } from "./services/orchards.service";
 import { AuthfService } from "./services/authf.service";
 import { AuthGuardFireService } from "./services/auth-guard-fire.service";
+import { LoadImagesService } from './services/load-images.service';
 
 // Pipes
 import { KeysPipe } from './pipes/keys.pipe';
+import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { KeysPipe } from './pipes/keys.pipe';
     FooterComponent,
     AboutComponent,
     ProtectedAddOrchardComponent,
-    KeysPipe
+    KeysPipe,
+    NgDropFilesDirective
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import { KeysPipe } from './pipes/keys.pipe';
     AuthGuardService,
     AuthGuardFireService,
     FruitsService,
+    LoadImagesService,
     OrchardsService
   ],
   bootstrap: [AppComponent],

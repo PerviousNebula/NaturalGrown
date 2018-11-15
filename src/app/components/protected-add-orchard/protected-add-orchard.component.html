@@ -63,9 +63,10 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-2 col-form-label">Foto</label>
-                    <div class="col-8">
-                        <input id="photo" class="form-control" type="file" name="photo">
+                    <label class="col-2 col-form-label">Fotos</label>
+                    <div [docs]="docs" appNgDropFiles (mouseOn)="testOnItem = $event" [ngClass]="{ 'file-over': isOnItem }" class="col-8 well drop-zone file-over">
+                        <h4>Arrastre sus imágenes aquí</h4>
+                        <img src="../../../assets/drop-images.png" alt="drop-images-here">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -81,9 +82,41 @@
         </div>
 
         <div class="col">
-            <agm-map (mapClick)="setMarker($event)" [latitude]="orchard.lat" [longitude]="orchard.lon" [zoom]="16" style="width:500px; height:500px">
-                <agm-marker [latitude]="orchard.lat" [longitude]="orchard.lon"></agm-marker>
-            </agm-map>
+            <div class="row">
+                <div class="col">
+                    <agm-map (mapClick)="setMarker($event)" [latitude]="orchard.lat" [longitude]="orchard.lon" [zoom]="16" style="width: 100%; height:410px">
+                        <agm-marker [latitude]="orchard.lat" [longitude]="orchard.lon"></agm-marker>
+                    </agm-map>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tamaño</th>
+                                <th>Progreso</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let doc of docs">
+                                <td [ngClass]="{ 'text-green': doc.progress >= 100 }">{{doc.fileName}}</td>
+                                <td>{{doc.doc.size / 1024 / 1024 | number: '.2-2' }} MB</td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" [ngStyle]="{ 'width': doc.progress + '%'}"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="div-align">
+                        <button (click)="clearFiles()" class="btn btn-sm btn-danger">Limpiar</button>
+                        <button [disabled]="docs.length == 0" (click)="loadImages()" class="btn btn-sm btn-primary">Cargar imágenes</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

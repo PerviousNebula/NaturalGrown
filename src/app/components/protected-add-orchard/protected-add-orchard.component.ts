@@ -3,6 +3,8 @@ import { NgForm } from "@angular/forms";
 import { Orchard } from "../../interfaces/orchard.interface";
 import { OrchardsService } from "../../services/orchards.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { FileItem } from 'src/app/models/file-item';
+import { LoadImagesService } from 'src/app/services/load-images.service';
 
 @Component({
   selector: 'app-protected-add-orchard',
@@ -10,6 +12,9 @@ import { Router, ActivatedRoute } from "@angular/router";
   styles: ['./protected-add-orchard.component.css']
 })
 export class ProtectedAddOrchardComponent {
+  /*variable para detectar si se esta haciendo el drop*/
+  isOnItem:boolean = false;
+
 
   /*Obj con el que vamos a trabajar para hacer las inserciones*/
   orchard:Orchard = {
@@ -24,10 +29,12 @@ export class ProtectedAddOrchardComponent {
   /*Variables extras*/
   new:boolean = false;
   id:string;
+  docs:FileItem[] = [];
 
   constructor(private _orchardService:OrchardsService,
               private router:Router,
-              private route:ActivatedRoute) {
+              private route:ActivatedRoute,
+              public _li:LoadImagesService) {
     /*Se manda a llamar primeramente al GPS*/
     if(!(this.orchard.lat && this.orchard.lon)) {      
       this.setPosition();
@@ -80,5 +87,17 @@ export class ProtectedAddOrchardComponent {
   setMarker(event) {
     this.orchard.lat = event.coords.lat;
     this.orchard.lon = event.coords.lng;
+  }
+
+  loadImages() {
+    this._li.uploadImages(this.docs);
+  }
+
+  clearFiles() {
+    this.docs = [];
+  }
+
+  testOnItem(event) {
+    
   }
 }
