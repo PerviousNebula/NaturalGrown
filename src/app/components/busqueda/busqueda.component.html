@@ -1,9 +1,38 @@
 <div class="container animated fadeIn fast">
     <h3>Encuentra <small>huerto más cercano</small></h3>
     <hr>
-    <div>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>Filtrar búsqueda</h2>
+            <hr>
+            <form (ngSubmit)="search()" #forma="ngForm">
+                <div class="row">
+                    <div class="col">
+                        <label for="fruit">Fruta</label>
+                        <input [(ngModel)]="filter.fruit" name="fruit" id="fruit" type="text" class="form-control" placeholder="Ej. Manzana, naranja">
+                    </div>
+                    <div class="col">
+                        <label for="fruit">Precio</label>
+                        <input id="price" type="number" class="form-control" placeholder="Ej. 20, 30">
+                    </div>
+                    <div class="col">
+                        <label class="mr-sm-2" for="orchardType">Tipo de huerto</label>
+                        <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="orchardType">
+                              <option selected>Elige...</option>
+                              <option value="Huerto Familiar">Huerto Familiar</option>
+                              <option value="Huerto Urbano">Huerto Urbano</option>
+                              <option value="">Huerto Ecológico</option>
+                            </select>
+                        <button type="submit" style="float: right;" class="btn btn-primary">Filtrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="map-container container">
         <agm-map [latitude]="lat" [longitude]="lon" [zoom]=2>
-            <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lon">
+            <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lon" [iconUrl]="marker.icon">
                 <agm-info-window>
                     <strong>Fruta</strong>
                     <p>{{ marker.title }}</p>

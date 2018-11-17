@@ -1,30 +1,35 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand brand-location" href="#">NaturalGrown.com</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['home']"><i class="material-icons">home</i>Inicio</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" *ngIf="_authf.user.uid" [routerLink]="['busqueda']"><i class="material-icons">location_searching</i>Búsqueda</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" *ngIf="_authf.user.uid" [routerLink]="['protected-add-orchard/nuevo']"><i class="material-icons">add_location</i>Agregar</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" *ngIf="_authf.user.uid" [routerLink]="['protected-home']"><i class="material-icons">verified_user</i>Mi perfil</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" [routerLink]="['about']"><i class="material-icons">info</i>Acerca de</a>
-            </li>
-        </ul>
+    <div class="container">
+        <a class="navbar-brand brand-location" href="#">
+            <img src="../../../../assets/logo.png" height="47.5" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar-text" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['home']"><i class="material-icons">home</i>INICIO</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['busqueda']"><i class="material-icons">location_searching</i>BÚSQUEDA</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" *ngIf="_authf.user.uid" [routerLink]="['protected-add-orchard/nuevo']"><i class="material-icons">add_location</i>AGREGAR</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" *ngIf="_authf.user.uid" [routerLink]="['protected-home']"><i class="material-icons">verified_user</i>PERFIL</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['about']"><i class="material-icons">info</i>ACERCA DE</a>
+                </li>
+            </ul>
 
-        <span class="navbar-text">
+            <span class="navbar-text">
+                <label class="user-info" *ngIf="_authf.user.uid"><span class="badge badge-success">Hola! {{ profile.name }} </span> </label>
             <button *ngIf="!_authf.user.uid" (click)="ingresar()" class="btn btn-sm btn-outline-success">INICIAR SESIÓN</button>
-            <button *ngIf="_authf.user.uid" (click)="cerrar_sesion()" class="btn btn-sm btn-outline-danger">CERRAR SESIÓN</button>
-        </span>
+            <button *ngIf="_authf.user.uid" (click)="cerrar_sesion()" class="btn btn-sm btn-outline-danger btn-position">SALIR</button>
+            </span>
+        </div>
     </div>
 </nav>

@@ -12,6 +12,8 @@ export class BusquedaComponent implements OnInit {
   lat: 32.514946;
   lon: -117.038246;
   markers:Marker[] = [];
+  filter:any = {};
+  icon:string = "../../../assets"
 
   constructor(private _orchardService:OrchardsService) {
     this.getOrchardsCoords();  
@@ -28,7 +30,7 @@ export class BusquedaComponent implements OnInit {
   
       console.log("hola",res[i].lon);
       
-      this.markers.push(new Marker(1, res[i].fruit, res[i].orchardType, res[i].price , Number(res[i].lat),Number(res[i].lon)));
+      this.markers.push(new Marker(1, res[i].fruit, res[i].orchardType, res[i].price , Number(res[i].lat),Number(res[i].lon),`${this.icon}/${res[i].fruit.toLowerCase()}.png`));
       // crear un obj tipo gmarker
 
       // asignar cada marker al obj map
@@ -40,4 +42,19 @@ export class BusquedaComponent implements OnInit {
   ngOnInit() {
   }
 
+  search() {
+    console.log(this.filter);
+    this._orchardService.getOrchards().subscribe(res => {
+      this.markers = [];
+      if(this.filter.fruit) {
+        for(let i in res) {  
+          if((this.filter.fruit.toLowerCase()) == res[i].fruit.toLowerCase())
+            this.markers.push(new Marker(1, res[i].fruit, res[i].orchardType, res[i].price , Number(res[i].lat),Number(res[i].lon),`${this.icon}/${res[i].fruit.toLowerCase()}.png`));
+        }
+        console.log(this.markers);
+      } else {
+        this.getOrchardsCoords();
+      }
+     });
+  }
 }

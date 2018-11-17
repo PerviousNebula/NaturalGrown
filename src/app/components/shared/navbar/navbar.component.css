@@ -1,4 +1,20 @@
-.brand-location {
-    padding-left: 9%;
-    font-weight: bold;
+.navbar {
+    background: #fff;
+    padding: 11.5px 0;
+    border-top: 2px solid #00b1b3;
+    min-height: 50px;
+    text-align: center;
+    height: 75px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar-text {
+    padding-bottom: 0%;
+    margin-bottom: 0%;
+}
+
+.user-info {
+    color: black;
+    font-size: 16px;
 }

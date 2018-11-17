@@ -7,8 +7,12 @@ import { AuthfService } from "../../../services/authf.service";
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  profile:any = {};
 
-  constructor(public _authf:AuthfService) {}
+  constructor(public _authf:AuthfService) {
+    this.profile = this._authf.user; 
+    console.log(this.profile);
+  }
 
   ingresar() {
     this._authf.login();

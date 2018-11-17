@@ -29,7 +29,7 @@ export class ProtectedHomeComponent implements OnInit {
               private _authf:AuthfService,
               private _orchardService:OrchardsService,
               private _addressService:AddressService) {
-              this.profile = this._authf.user; 
+    this.profile = this._authf.user; 
     this._orchardService.getOrchards().subscribe(data => {
       console.log(data);
       //this.loading = false;
