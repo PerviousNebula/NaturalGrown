@@ -12,7 +12,7 @@ export class FruitsService {
       img: "assets/oranges2.jpg"
     },
     {
-      name: "Platanos",
+      name: "Plátanos",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       img: "assets/bananas2.jpg"
     },
@@ -22,7 +22,7 @@ export class FruitsService {
       img: "assets/apples.jpg"
     },
     {
-      name: "Brocoli",
+      name: "Brócoli",
       desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
       img: "assets/broccoli2.jpg"
     },
