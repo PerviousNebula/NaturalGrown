@@ -13,6 +13,7 @@ import { AddressService } from "../../services/address.service";
 export class ProtectedHomeComponent implements OnInit {
   profile:any = {};
   orchards:any[] = [];
+  filteredOrchards:any[] = [];
   loading:boolean = true;
   addresses:any[] = [];
   
@@ -36,8 +37,20 @@ export class ProtectedHomeComponent implements OnInit {
       setTimeout(() => {
         this.loading = false;
         this.orchards = data;
+        this.applyFilter(this.orchards);
       }, 3000);
     });       
+  }
+  
+  applyFilter(orchards) {
+    console.log("Objetos obtenidos", orchards);
+    for(let i in orchards) {
+      console.log("UID: ", orchards[i].uid)
+      if(orchards[i].uid == this.profile.uid) {
+        this.filteredOrchards.push(orchards[i]);
+      }
+    }
+    console.log("Valores filtrados", this.filteredOrchards);
   }
 
   ngOnInit() {

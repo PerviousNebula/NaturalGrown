@@ -1,61 +1,86 @@
-<div class="main">
-    <div class="jumbotron animated fadeIn fast">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-8 col-lg-7">
-                    <h1 class="display-8 shadow-title">¿Cuál es la mejor forma de alimentarnos?</h1>
-                    <p class="lead shadow-title"><b>Encuentra cientos de huertos orgánicos cerca de ti y empieza hoy a alimentarte de la mejor manera.
-                    </b></p>
-                    <br/>
-                    <p class="lead shadow-title"><b>Registrate y encuentra frutas y verduras orgánicas a muy buen precio, o si lo prefieres, empieza a vender ahora mismo y gana dinero sin mover un sólo pie de tu hogar.
-                    </b></p>
-                    <p>
-                        <button [routerLink]="['/about']" class="btn btn-lg btn-primary separation"><i class="material-icons">info</i>Saber más</button>
-                        <button [routerLink]="['/busqueda']" class="btn btn-lg btn-light"><i class="material-icons">search</i>Busca un huerto</button>
-                    </p>
-                </div>
-                <div class="col-xs-12 col-md-4 col-lg-5">
-                    <!--<img class="img img-fluid img-responsive" alt="Responsive image" src="../../../assets/farmer.png">-->
-                </div>
-            </div>
-        </div>
-    </div>
-
+<div class="jumbotron animated fadeIn fast">
     <div class="container">
         <div class="row">
-            <div class="col-12 title-fruits">
-                <h3>Productos populares y saludables</h3>
+            <div class="col-xs-12 col-md-8 col-lg-7">
+                <h1 class="display-8 shadow-title">¿Cuál es la mejor forma de alimentarnos?</h1>
+                <p class="lead shadow-title"><b>Encuentra cientos de huertos orgánicos cerca de ti y empieza hoy a alimentarte de la mejor manera.
+                    </b></p>
+                <br/>
+                <p class="lead shadow-title"><b>Registrate y encuentra frutas y verduras orgánicas a muy buen precio, o si lo prefieres, empieza a vender ahora mismo y gana dinero sin mover un sólo pie de tu hogar.
+                    </b></p>
+                <p>
+                    <button [routerLink]="['/about']" class="btn btn-lg btn-info separation"><i class="material-icons">info</i>Saber más</button>
+                    <button [routerLink]="['/busqueda']" class="btn btn-lg btn-light"><i class="material-icons">search</i>Busca un huerto</button>
+                </p>
+            </div>
+            <div class="col-xs-12 col-md-4 col-lg-5">
+                <!--<img class="img img-fluid img-responsive" alt="Responsive image" src="../../../assets/farmer.png">-->
             </div>
         </div>
     </div>
+</div>
+<div class="container-fluid app-download-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="../../../assets/logo-app.png" width="100" height="100">
+            </div>
+            <div style="align-content:center" class="col-md-9">
+                <p class="app-center-container">¿Deseas tener la aplicación NaturlaGrown en tu teléfono iPhone o Android? Descarga ahora mismo nuestra aplicación desde tu teléfono y empieza a registrar tus huertos </p>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-lg btn-info">SABER MÁS</button>
+            </div>
 
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 title-fruits">
+            <h3>Productos populares y saludables</h3>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="card-deck">
+            <div class="card" style="width: 18rem;" *ngFor="let fruit of fruits | slice:0:4">
+                <img class="card-img-top" [src]="fruit.img" [alt]="fruit.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{fruit.name}}</h5>
+                    <p class="card-text">{{fruit.desc}}</p>
+                    <a href="#" class="btn btn-primary">Explorar</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <br>
-
-    <div class="container">
-        <div class="row">
-            <div class="card-deck">
-                <div class="card" style="width: 18rem;" *ngFor="let fruit of fruits | slice:0:4">
-                    <img class="card-img-top" [src]="fruit.img" [alt]="fruit.name">
-                    <div class="card-body">
-                        <h5 class="card-title">{{fruit.name}}</h5>
-                        <p class="card-text">{{fruit.desc}}</p>
-                        <a href="#" class="btn btn-primary">Explorar</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="card-deck">
-                <div class="card" style="width: 18rem;" *ngFor="let fruit of fruits | slice:4:8">
-                    <img class="card-img-top" [src]="fruit.img" [alt]="fruit.name">
-                    <div class="card-body">
-                        <h5 class="card-title">{{fruit.name}}</h5>
-                        <p class="card-text">{{fruit.desc}}</p>
-                        <a href="#" class="btn btn-primary">Explorar</a>
-                    </div>
+    <div class="row">
+        <div class="card-deck">
+            <div class="card" style="width: 18rem;" *ngFor="let fruit of fruits | slice:4:8">
+                <img class="card-img-top" [src]="fruit.img" [alt]="fruit.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{fruit.name}}</h5>
+                    <p class="card-text">{{fruit.desc}}</p>
+                    <a href="#" class="btn btn-primary">Explorar</a>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<br><br><br>
+
+<div class="container flags-container">
+    <ul style="list-style-type:none">
+        <li>
+            <a class="languages" href="#"><img class="flags-icons img-rounded" src="../../../assets/united-kingdom.png" alt="english">Inglés</a>
+            <a class="languages" href="#"><img class="flags-icons img-rounded" src="../../../assets/spain.png" alt="spanish">Español</a>
+        </li>
+    </ul>
 </div>

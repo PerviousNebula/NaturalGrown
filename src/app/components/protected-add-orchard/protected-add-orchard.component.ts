@@ -5,6 +5,7 @@ import { OrchardsService } from "../../services/orchards.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FileItem } from 'src/app/models/file-item';
 import { LoadImagesService } from 'src/app/services/load-images.service';
+import { AuthfService } from "../../services/authf.service";
 
 @Component({
   selector: 'app-protected-add-orchard',
@@ -23,7 +24,8 @@ export class ProtectedAddOrchardComponent {
     dateHarv:new Date(),
     lat:0,
     lon:0, 
-    orchardType:""
+    orchardType:"",
+    uid:""
   }
   
   /*Variables extras*/
@@ -34,11 +36,16 @@ export class ProtectedAddOrchardComponent {
   constructor(private _orchardService:OrchardsService,
               private router:Router,
               private route:ActivatedRoute,
-              public _li:LoadImagesService) {
+              public _li:LoadImagesService,
+              public _authf:AuthfService) {
     /*Se manda a llamar primeramente al GPS*/
     if(!(this.orchard.lat && this.orchard.lon)) {      
       this.setPosition();
     }
+
+    /*Indexamos el uid del usuario que esta registrando el huerto*/
+    this.orchard.uid = _authf.user.uid;
+    console.log(this.orchard.uid);
 
     this.route.params.subscribe(parameters => {
       console.log("HOLA MUNDO",parameters);

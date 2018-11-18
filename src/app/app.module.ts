@@ -58,7 +58,7 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
     FormsModule,
     HttpModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAJwW7b17BUl4rrUwUN9OqR-GpEC-0P38o'
+      apiKey: 'AIzaSyAJwW7b17BUl4rrUwUN9OqR-GpEC-0P38o' 
     }),
     AngularFirestoreModule, 
     AngularFireAuthModule, 

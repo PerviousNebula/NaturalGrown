@@ -74,12 +74,12 @@
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
-            <tbody *ngFor="let k of orchards | keys; let i = index">
+            <tbody *ngFor="let k of filteredOrchards | keys; let i = index">
                 <td>{{ i + 1 }}</td>
-                <td>{{ orchards[k].fruit }}</td>
-                <td>{{ orchards[k].price }}</td>
-                <td>{{ orchards[k].dateHarv }}</td>
-                <td>{{ orchards[k].orchardType }}</td>
+                <td>{{ filteredOrchards[k].fruit }}</td>
+                <td>{{ filteredOrchards[k].price }}</td>
+                <td>{{ filteredOrchards[k].dateHarv }}</td>
+                <td>{{ filteredOrchards[k].orchardType }}</td>
                 <td>
                     <button [routerLink]="['/protected-add-orchard', k]" class="btn btn-sm btn-dark"><i class="material-icons md-18" style="font-size: 18px">edit</i></button>
                     <button (click)="deleteOrchard(k)" class="btn btn-sm btn-danger"><i class="material-icons md-18" style="font-size: 18px">delete_forever</i></button>

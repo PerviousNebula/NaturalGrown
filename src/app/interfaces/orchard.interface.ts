@@ -7,4 +7,5 @@ export interface Orchard {
     lat:number;
     lon:number;
     key$?:string;
+    uid:string;
 }

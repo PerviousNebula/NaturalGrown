@@ -1,5 +1,6 @@
 .jumbotron {
     margin-top: 0%;
+    margin-bottom: 0;
     color: #ffffff;
     background-image: linear-gradient(to right, #07b2b0, #80c77e);
 }
@@ -15,4 +16,42 @@
 .title-fruits {
     padding-left: 0%;
     margin-left: 0%;
+}
+
+.languages {
+    color: black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.flags-container {
+    text-align: center;
+    float: center;
+    padding-top: 20%;
+    display: inline;
+    vertical-align: middle;
+    width: 30px;
+    height: auto;
+}
+
+.flags-icons {
+    margin-right: 8px;
+    margin-left: 2%;
+}
+
+.app-download-container {
+    background: #c7c7c7;
+    width: 100%;
+    padding-top: 0;
+    margin-bottom: 5%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.app-center-container {
+    color: white;
+    font-size: 21px;
+    font-weight: 400;
+    text-align: center;
+    text-shadow: .14px .14px black;
 }
